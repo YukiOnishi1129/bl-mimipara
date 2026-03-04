@@ -132,7 +132,7 @@ export default async function Home() {
             href="/search?genre=voice&sort=rank"
             works={voiceRanking}
             showRankBadge
-            rankBadgeColor="pink"
+            rankBadgeColor="purple"
           />
         )}
 
@@ -144,7 +144,7 @@ export default async function Home() {
             href="/search?genre=game&sort=rank"
             works={gameRanking}
             showRankBadge
-            rankBadgeColor="rose"
+            rankBadgeColor="violet"
           />
         )}
 
@@ -166,7 +166,7 @@ export default async function Home() {
             href="/search?platform=dlsite&sort=rank"
             works={dlsiteRanking}
             showRankBadge
-            rankBadgeColor="coral"
+            rankBadgeColor="indigo"
           />
         )}
 
@@ -178,7 +178,7 @@ export default async function Home() {
             href="/search?platform=fanza&sort=rank"
             works={fanzaRanking}
             showRankBadge
-            rankBadgeColor="coral"
+            rankBadgeColor="indigo"
           />
         )}
 

@@ -242,7 +242,7 @@ function SearchContentInner({ bannerData }: SearchContentProps) {
                   ? opt.value === "dlsite"
                     ? "bg-blue-600 text-white"
                     : opt.value === "fanza"
-                      ? "bg-orange-500 text-white"
+                      ? "bg-indigo-500 text-white"
                       : "bg-primary text-white"
                   : "bg-secondary text-foreground hover:bg-secondary/80"
               }`}
@@ -319,8 +319,8 @@ function SearchContentInner({ bannerData }: SearchContentProps) {
             </div>
           )}
           {hasMoreResults && displayCount >= displayResults.length && (
-            <div className="mt-4 rounded-2xl bg-amber-500/10 p-4 text-center">
-              <p className="text-sm text-amber-600">
+            <div className="mt-4 rounded-2xl bg-violet-500/10 p-4 text-center">
+              <p className="text-sm text-violet-600">
                 表示上限（{MAX_DISPLAY_RESULTS}件）に達しました。検索条件を絞り込んでください。
               </p>
             </div>

@@ -181,7 +181,7 @@ export default async function CVTokushuListPage() {
         {fanzaFeatures.length > 0 && (
           <section className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <Badge variant="secondary" className="bg-orange-500 text-white">
+              <Badge variant="secondary" className="bg-violet-500 text-white">
                 FANZA
               </Badge>
               <h2 className="text-lg font-bold text-foreground font-heading">

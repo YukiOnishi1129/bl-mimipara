@@ -167,7 +167,7 @@ export function FixedPurchaseCta({
           asChild
           className={`flex-shrink-0 gap-2 font-bold ${
             isOnSale
-              ? "bg-orange-500 hover:bg-orange-600"
+              ? "bg-indigo-500 hover:bg-indigo-600"
               : "bg-cta hover:bg-cta-hover text-cta-foreground"
           }`}
         >

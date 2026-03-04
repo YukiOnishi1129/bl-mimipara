@@ -75,7 +75,7 @@ export default async function SaleListPage() {
       <main className="mx-auto max-w-5xl px-4 py-4">
         {/* コンパクトヘッダー */}
         <div className="mb-4 flex items-center gap-2">
-          <Flame className="h-5 w-5 text-rose-500" />
+          <Flame className="h-5 w-5 text-violet-500" />
           <h1 className="text-xl font-bold text-foreground font-heading">
             セール中の作品
           </h1>

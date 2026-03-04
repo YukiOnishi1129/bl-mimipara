@@ -159,7 +159,7 @@ function FeaturedWorkCard({
               </span>
             )}
             <span
-              className={`text-lg font-bold ${work.isOnSale ? "text-red-500" : "text-foreground"}`}
+              className={`text-lg font-bold ${work.isOnSale ? "text-indigo-500" : "text-foreground"}`}
             >
               {formatPrice(salePrice)}
             </span>
@@ -254,7 +254,7 @@ export default async function SalePage() {
         {/* ページヘッダー */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <Flame className="h-6 w-6 text-red-500" />
+            <Flame className="h-6 w-6 text-indigo-500" />
             <h1 className="text-xl font-bold text-foreground font-heading">
               セール特集
             </h1>
@@ -345,7 +345,7 @@ export default async function SalePage() {
         {saleWorks.length > 0 && (
           <section className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <Tag className="h-5 w-5 text-red-500" />
+              <Tag className="h-5 w-5 text-indigo-500" />
               <h2 className="text-lg font-bold text-foreground font-heading">
                 セール中の全作品
               </h2>
@@ -411,7 +411,7 @@ export default async function SalePage() {
                               {formatPrice(originalPrice)}
                             </span>
                           )}
-                          <span className="text-sm font-bold text-red-500">
+                          <span className="text-sm font-bold text-indigo-500">
                             {formatPrice(salePrice)}
                           </span>
                         </div>

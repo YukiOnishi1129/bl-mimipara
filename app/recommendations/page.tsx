@@ -99,11 +99,11 @@ function RecommendationCard({
             <div
               className={`flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm ${
                 rank === 1
-                  ? "bg-amber-500 text-white"
+                  ? "bg-violet-500 text-white"
                   : rank === 2
                     ? "bg-gray-400 text-white"
                     : rank === 3
-                      ? "bg-amber-700 text-white"
+                      ? "bg-violet-700 text-white"
                       : "bg-muted text-muted-foreground"
               }`}
             >
@@ -194,7 +194,7 @@ function RecommendationCard({
               </span>
             )}
             <span
-              className={`text-lg font-bold ${work.isOnSale ? "text-red-500" : "text-foreground"}`}
+              className={`text-lg font-bold ${work.isOnSale ? "text-indigo-500" : "text-foreground"}`}
             >
               {formatPrice(salePrice)}
             </span>
@@ -397,15 +397,15 @@ export default async function RecommendationsPage() {
         {saleFeature && (
           <section className="mt-10">
             <Link href="/sale">
-              <Card className="overflow-hidden border border-red-300/50 hover:border-red-400/70 transition-all">
+              <Card className="overflow-hidden border border-indigo-300/50 hover:border-indigo-400/70 transition-all">
                 <CardContent className="flex items-center gap-4 p-4">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-50 shrink-0">
-                    <Flame className="h-6 w-6 text-red-500" />
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50 shrink-0">
+                    <Flame className="h-6 w-6 text-indigo-500" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <Sparkles className="h-4 w-4 text-red-500" />
-                      <span className="text-sm font-bold text-red-500">
+                      <Sparkles className="h-4 w-4 text-indigo-500" />
+                      <span className="text-sm font-bold text-indigo-500">
                         セール特集
                       </span>
                     </div>
@@ -415,7 +415,7 @@ export default async function RecommendationsPage() {
                         ` ・ 最大${saleFeature.max_discount_rate}%OFF`}
                     </p>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-red-500 shrink-0" />
+                  <ChevronRight className="h-5 w-5 text-indigo-500 shrink-0" />
                 </CardContent>
               </Card>
             </Link>

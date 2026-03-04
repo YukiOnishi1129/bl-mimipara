@@ -46,9 +46,9 @@ export function SaleTimer({ endDate, discountRate }: SaleTimerProps) {
   }
 
   return (
-    <Card className="p-4 bg-gradient-to-r from-orange-50 to-rose-50 border-orange-200">
+    <Card className="p-4 bg-gradient-to-r from-violet-50 to-indigo-50 border-violet-200">
       <div className="flex items-center gap-3">
-        <Clock className="h-6 w-6 text-orange-500" />
+        <Clock className="h-6 w-6 text-violet-500" />
         <div className="flex-1">
           <div className="flex items-center gap-2">
             {discountRate && discountRate > 0 && <Badge variant="sale">{discountRate}%OFF</Badge>}
@@ -59,17 +59,17 @@ export function SaleTimer({ endDate, discountRate }: SaleTimerProps) {
           <div className="mt-1 flex items-baseline gap-1">
             {timeLeft.days > 0 && (
               <>
-                <span className="text-2xl font-bold text-orange-600">
+                <span className="text-2xl font-bold text-violet-600">
                   {timeLeft.days}
                 </span>
                 <span className="text-sm text-muted-foreground">日</span>
               </>
             )}
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-violet-600">
               {timeLeft.hours}
             </span>
             <span className="text-sm text-muted-foreground">時間</span>
-            <span className="text-2xl font-bold text-orange-600">
+            <span className="text-2xl font-bold text-violet-600">
               {timeLeft.minutes}
             </span>
             <span className="text-sm text-muted-foreground">分</span>

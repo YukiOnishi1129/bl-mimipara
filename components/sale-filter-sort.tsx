@@ -169,7 +169,7 @@ export function SaleFilterSort({ works }: SaleFilterSortProps) {
             onClick={() => setIsPriceModalOpen(true)}
             className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               maxPrice !== "all"
-                ? "bg-rose-500 text-white"
+                ? "bg-violet-500 text-white"
                 : "bg-secondary text-foreground hover:bg-secondary/80"
             }`}
           >
@@ -260,13 +260,13 @@ export function SaleFilterSort({ works }: SaleFilterSortProps) {
                   }}
                   className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-left transition-colors ${
                     sort === opt.value
-                      ? "bg-rose-500/10 text-rose-500"
+                      ? "bg-violet-500/10 text-violet-500"
                       : "hover:bg-secondary"
                   }`}
                 >
                   <span className="text-base">{opt.label}</span>
                   {sort === opt.value && (
-                    <Check className="h-5 w-5 text-rose-500" />
+                    <Check className="h-5 w-5 text-violet-500" />
                   )}
                 </button>
               ))}
@@ -308,13 +308,13 @@ export function SaleFilterSort({ works }: SaleFilterSortProps) {
                   }}
                   className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-left transition-colors ${
                     maxPrice === opt.value
-                      ? "bg-rose-500/10 text-rose-500"
+                      ? "bg-violet-500/10 text-violet-500"
                       : "hover:bg-secondary"
                   }`}
                 >
                   <span className="text-base">{opt.label}</span>
                   {maxPrice === opt.value && (
-                    <Check className="h-5 w-5 text-rose-500" />
+                    <Check className="h-5 w-5 text-violet-500" />
                   )}
                 </button>
               ))}

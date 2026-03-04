@@ -157,11 +157,11 @@ function RecommendationCard({
             <div
               className={`flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm ${
                 rank === 1
-                  ? "bg-amber-500 text-white"
+                  ? "bg-violet-500 text-white"
                   : rank === 2
                     ? "bg-gray-400 text-white"
                     : rank === 3
-                      ? "bg-amber-700 text-white"
+                      ? "bg-violet-700 text-white"
                       : "bg-muted text-muted-foreground"
               }`}
             >

@@ -105,8 +105,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ...(work.actors || []),
     work.circleName,
     work.category,
-    "TL",
-    "乙女",
+    "BL",
+    "ボーイズラブ",
     "DLsite",
     "FANZA",
   ].filter(Boolean) as string[];
@@ -212,7 +212,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
       {/* セール中スティッキーバナー（モバイル） */}
       {isOnSale && saleEndDate && work.maxDiscountRate && work.maxDiscountRate > 0 && (
-        <div className="sticky top-14 z-40 bg-linear-to-r from-rose-500 to-orange-500 text-white py-1.5 px-4 shadow-md md:hidden">
+        <div className="sticky top-14 z-40 bg-linear-to-r from-violet-500 to-indigo-500 text-white py-1.5 px-4 shadow-md md:hidden">
           <div className="flex items-center justify-center gap-2 text-xs">
             <span className="font-bold">{work.maxDiscountRate}%OFF</span>
             <span>終了まで</span>
@@ -275,8 +275,8 @@ export default async function WorkDetailPage({ params }: Props) {
                         <svg key={star} className="h-5 w-5" viewBox="0 0 20 20">
                           <path
                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                            fill={star <= Math.round(rating) ? "#f6b7c3" : "#f0e0d8"}
-                            stroke="#e8a0bf"
+                            fill={star <= Math.round(rating) ? "#9B8EC4" : "#D8D5E4"}
+                            stroke="#7B6BA5"
                             strokeWidth="0.5"
                           />
                         </svg>
@@ -342,12 +342,12 @@ export default async function WorkDetailPage({ params }: Props) {
               if (!ctaUrl) return null;
 
               return (
-                <Card className={`overflow-hidden ${ctaIsOnSale ? "border-orange-500/50 bg-linear-to-r from-orange-50 to-red-50" : "border-primary/30 bg-linear-to-r from-pink-50 to-rose-50"}`}>
+                <Card className={`overflow-hidden ${ctaIsOnSale ? "border-indigo-500/50 bg-linear-to-r from-indigo-50 to-violet-50" : "border-primary/30 bg-linear-to-r from-violet-50 to-indigo-50"}`}>
                   <CardContent className="p-4">
                     {ctaIsOnSale && (
                       <div className="flex items-center gap-2 mb-2">
                         <Badge variant="sale" className="text-sm px-2 py-1">{ctaDiscountRate}%OFF</Badge>
-                        <span className="text-sm font-bold text-orange-600">今だけの特別価格！</span>
+                        <span className="text-sm font-bold text-indigo-600">今だけの特別価格！</span>
                       </div>
                     )}
                     {/* 評価・レビュー数 */}
@@ -379,7 +379,7 @@ export default async function WorkDetailPage({ params }: Props) {
                       productId={ctaPlatform === "dlsite" ? work.dlsiteProductId || undefined : undefined}
                       workId={work.id}
                       disabled={!ctaUrl}
-                      className={`w-full py-4 text-lg font-bold text-white ${ctaIsOnSale ? "bg-orange-500 hover:bg-orange-600" : "bg-cta hover:bg-cta-hover"}`}
+                      className={`w-full py-4 text-lg font-bold text-white ${ctaIsOnSale ? "bg-indigo-500 hover:bg-indigo-600" : "bg-cta hover:bg-cta-hover"}`}
                     >
                       {getCtaLabel(work.genre, work.category)}
                     </AffiliateLink>
@@ -435,7 +435,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* 🎯 こんな人におすすめ */}
           {work.aiTargetAudience && (
-            <Card className="bg-pink-50 border-pink-200">
+            <Card className="bg-violet-50 border-violet-200">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-bold text-foreground">🎯 こんな人におすすめ</CardTitle>
               </CardHeader>
@@ -447,7 +447,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* ここが魅力！ */}
           {work.aiAppealPoints && (
-            <Card className="bg-rose-50 border-rose-200">
+            <Card className="bg-indigo-50 border-indigo-200">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-bold text-foreground">ここが魅力！</CardTitle>
               </CardHeader>
@@ -471,7 +471,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* 📝 みみぱら編集部レビュー */}
           {work.aiReview && (
-            <Card className="bg-linear-to-br from-pink-50 to-rose-50 border-pink-200">
+            <Card className="bg-linear-to-br from-violet-50 to-indigo-50 border-violet-200">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-bold text-foreground">📝 みみぱら編集部レビュー</CardTitle>
               </CardHeader>
@@ -530,7 +530,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* 購入者の声から分かったこと */}
           {(work.aiAppealPoints || work.aiRecommendReason) && (
-            <div className="p-4 rounded-lg bg-linear-to-r from-pink-50 to-rose-50 border border-pink-200">
+            <div className="p-4 rounded-lg bg-linear-to-r from-violet-50 to-indigo-50 border border-violet-200">
               <p className="text-sm font-bold text-foreground mb-1">
                 購入者の声から分かったこと
               </p>
@@ -556,7 +556,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 </thead>
                 <tbody>
                   {work.priceDlsite !== null && work.priceDlsite !== undefined && (
-                    <tr className={`border-t border-border ${hasBothPrices && cheaperPlatform === "DLsite" ? "bg-pink-50" : ""}`}>
+                    <tr className={`border-t border-border ${hasBothPrices && cheaperPlatform === "DLsite" ? "bg-violet-50" : ""}`}>
                       <td className="px-2 sm:px-4 py-3">
                         <div className="flex flex-col gap-1">
                           <span className="font-medium text-foreground">DLsite</span>
@@ -589,7 +589,7 @@ export default async function WorkDetailPage({ params }: Props) {
                           productId={work.dlsiteProductId || undefined}
                           workId={work.id}
                           disabled={!work.dlsiteUrl}
-                          className={`font-bold text-white ${work.discountRateDlsite && work.discountRateDlsite > 0 ? "bg-orange-500 hover:bg-orange-600" : "bg-cta hover:bg-cta-hover"}`}
+                          className={`font-bold text-white ${work.discountRateDlsite && work.discountRateDlsite > 0 ? "bg-indigo-500 hover:bg-indigo-600" : "bg-cta hover:bg-cta-hover"}`}
                         >
                           {getCtaLabel(work.genre, work.category)}
                         </AffiliateLink>
@@ -597,7 +597,7 @@ export default async function WorkDetailPage({ params }: Props) {
                     </tr>
                   )}
                   {work.priceFanza !== null && work.priceFanza !== undefined && (
-                    <tr className={`border-t border-border ${hasBothPrices && cheaperPlatform === "FANZA" ? "bg-pink-50" : ""}`}>
+                    <tr className={`border-t border-border ${hasBothPrices && cheaperPlatform === "FANZA" ? "bg-violet-50" : ""}`}>
                       <td className="px-2 sm:px-4 py-3">
                         <div className="flex flex-col gap-1">
                           <span className="font-medium text-foreground">FANZA</span>
@@ -629,7 +629,7 @@ export default async function WorkDetailPage({ params }: Props) {
                           url={work.fanzaUrl || ""}
                           workId={work.id}
                           disabled={!work.fanzaUrl}
-                          className={`font-bold text-white ${work.discountRateFanza && work.discountRateFanza > 0 ? "bg-orange-500 hover:bg-orange-600" : "bg-cta hover:bg-cta-hover"}`}
+                          className={`font-bold text-white ${work.discountRateFanza && work.discountRateFanza > 0 ? "bg-indigo-500 hover:bg-indigo-600" : "bg-cta hover:bg-cta-hover"}`}
                         >
                           {getCtaLabel(work.genre, work.category)}
                         </AffiliateLink>
@@ -674,12 +674,12 @@ export default async function WorkDetailPage({ params }: Props) {
             if (!ctaUrl) return null;
 
             return (
-              <Card className={`overflow-hidden ${ctaIsOnSale ? "border-orange-500/50 bg-linear-to-r from-orange-50 to-red-50" : "border-primary/30 bg-linear-to-r from-pink-50 to-rose-50"}`}>
+              <Card className={`overflow-hidden ${ctaIsOnSale ? "border-indigo-500/50 bg-linear-to-r from-indigo-50 to-violet-50" : "border-primary/30 bg-linear-to-r from-violet-50 to-indigo-50"}`}>
                 <CardContent className="p-4 sm:p-6">
                   {ctaIsOnSale && (
                     <div className="flex items-center gap-2 mb-3">
                       <Badge variant="sale" className="text-sm px-2 py-1">{ctaDiscountRate}%OFF</Badge>
-                      <span className="text-sm font-bold text-orange-600">今だけの特別価格！</span>
+                      <span className="text-sm font-bold text-indigo-600">今だけの特別価格！</span>
                     </div>
                   )}
                   {rating && (
@@ -694,7 +694,7 @@ export default async function WorkDetailPage({ params }: Props) {
                         </span>
                       )}
                       {rating >= 4.5 && (
-                        <Badge variant="outline" className="text-xs border-amber-500 text-amber-600">高評価</Badge>
+                        <Badge variant="outline" className="text-xs border-violet-500 text-violet-600">高評価</Badge>
                       )}
                     </div>
                   )}
@@ -713,7 +713,7 @@ export default async function WorkDetailPage({ params }: Props) {
                     productId={ctaPlatform === "dlsite" ? work.dlsiteProductId || undefined : undefined}
                     workId={work.id}
                     disabled={!ctaUrl}
-                    className={`w-full py-5 text-xl font-bold text-white ${ctaIsOnSale ? "bg-orange-500 hover:bg-orange-600" : "bg-cta hover:bg-cta-hover"}`}
+                    className={`w-full py-5 text-xl font-bold text-white ${ctaIsOnSale ? "bg-indigo-500 hover:bg-indigo-600" : "bg-cta hover:bg-cta-hover"}`}
                   >
                     {getCtaLabel(work.genre, work.category)}
                   </AffiliateLink>
