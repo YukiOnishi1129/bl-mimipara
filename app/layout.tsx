@@ -5,7 +5,7 @@ import { Zen_Maru_Gothic, Noto_Sans_JP } from "next/font/google";
 import { MobileNav } from "@/components/mobile-nav";
 import "./globals.css";
 
-const GA_MEASUREMENT_ID = "CHANGE_ME";
+const GA_MEASUREMENT_ID = "G-9PKG6F28S5";
 
 const zenMaruGothic = Zen_Maru_Gothic({
   variable: "--font-heading",
