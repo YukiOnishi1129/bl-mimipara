@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { WorkGridWithLoadMore } from "@/components/work-grid-with-load-more";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { AffiliateLink } from "@/components/affiliate-link";
 import { getCircleWithWorks, getAllCircleNames } from "@/lib/db";
 import { dbCircleToCircle, dbWorkToWork } from "@/lib/types";
 import { notFound } from "next/navigation";
@@ -79,26 +79,24 @@ export default async function CircleDetailPage({ params }: Props) {
 
           <div className="mt-4 flex gap-3">
             {circle.dlsiteId && (
-              <a
-                href={`https://www.dlsite.com/girls/circle/profile/=/maker_id/${circle.dlsiteId}.html`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <AffiliateLink
+                platform="dlsite"
+                url={`https://www.dlsite.com/girls/circle/profile/=/maker_id/${circle.dlsiteId}.html`}
+                size="sm"
+                variant="outline"
               >
-                <Button variant="outline" size="sm">
-                  DLsite
-                </Button>
-              </a>
+                DLsite
+              </AffiliateLink>
             )}
             {circle.fanzaId && (
-              <a
-                href={`https://www.dmm.co.jp/dc/doujin/-/maker/=/article=maker/id=${circle.fanzaId}/`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <AffiliateLink
+                platform="fanza"
+                url={`https://www.dmm.co.jp/dc/doujin/-/maker/=/article=maker/id=${circle.fanzaId}/`}
+                size="sm"
+                variant="outline"
               >
-                <Button variant="outline" size="sm">
-                  FANZA
-                </Button>
-              </a>
+                FANZA
+              </AffiliateLink>
             )}
           </div>
         </div>
