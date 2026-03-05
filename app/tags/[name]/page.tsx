@@ -4,7 +4,7 @@ import { Footer } from "@/components/footer";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { WorkGridWithLoadMore } from "@/components/work-grid-with-load-more";
 import { Badge } from "@/components/ui/badge";
-import { getWorksByTag, getAllTagNames, getRelatedTags } from "@/lib/db";
+import { getWorksByTag, getAllTagNames, getRelatedTags, tagSlugToName, tagNameToSlug } from "@/lib/db";
 import { dbWorkToWork } from "@/lib/types";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -17,15 +17,21 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { name } = await params;
-  const decodedName = decodeURIComponent(name);
-  const dbWorks = await getWorksByTag(decodedName);
+  const slug = decodeURIComponent(name);
+  const tagName = await tagSlugToName(slug);
+
+  if (!tagName) {
+    return { title: "タグが見つかりません | みみぱら" };
+  }
+
+  const dbWorks = await getWorksByTag(tagName);
 
   if (dbWorks.length === 0) {
     return { title: "タグが見つかりません | みみぱら" };
   }
 
-  const title = `「${decodedName}」タグの作品（${dbWorks.length}作品） | みみぱら`;
-  const description = `「${decodedName}」タグのBL ASMR＆ゲーム作品${dbWorks.length}作品を掲載。`;
+  const title = `「${tagName}」タグの作品（${dbWorks.length}作品） | みみぱら`;
+  const description = `「${tagName}」タグのBL ASMR＆ゲーム作品${dbWorks.length}作品を掲載。`;
 
   return { title, description };
 }
@@ -40,10 +46,16 @@ export const dynamicParams = false;
 
 export default async function TagDetailPage({ params }: Props) {
   const { name } = await params;
-  const decodedName = decodeURIComponent(name);
+  const slug = decodeURIComponent(name);
+  const tagName = await tagSlugToName(slug);
+
+  if (!tagName) {
+    notFound();
+  }
+
   const [dbWorks, relatedTags] = await Promise.all([
-    getWorksByTag(decodedName),
-    getRelatedTags(decodedName, 10),
+    getWorksByTag(tagName),
+    getRelatedTags(tagName, 10),
   ]);
 
   if (dbWorks.length === 0) {
@@ -63,12 +75,12 @@ export default async function TagDetailPage({ params }: Props) {
           items={[
             { label: "トップ", href: "/" },
             { label: "タグ", href: "/tags" },
-            { label: decodedName },
+            { label: tagName },
           ]}
         />
 
         <h1 className="mb-2 text-2xl font-bold text-foreground font-heading">
-          {decodedName}
+          {tagName}
         </h1>
         <p className="mb-6 text-sm text-muted-foreground">
           {totalCount}作品
@@ -82,7 +94,7 @@ export default async function TagDetailPage({ params }: Props) {
               {relatedTags.map((tag) => (
                 <Link
                   key={tag.name}
-                  href={`/tags/${encodeURIComponent(tag.name)}`}
+                  href={`/tags/${encodeURIComponent(tagNameToSlug(tag.name))}`}
                 >
                   <Badge
                     variant="tag"
@@ -103,7 +115,7 @@ export default async function TagDetailPage({ params }: Props) {
             {totalCount > MAX_SSG_WORKS && (
               <div className="mt-6 text-center">
                 <a
-                  href={`/search/?q=${encodeURIComponent(decodedName)}`}
+                  href={`/search/?q=${encodeURIComponent(tagName)}`}
                   className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
                 >
                   検索ページで全{totalCount}件を見る

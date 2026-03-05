@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Badge } from "@/components/ui/badge";
-import { getTags } from "@/lib/db";
+import { getTags, tagNameToSlug } from "@/lib/db";
 import { dbTagToTag } from "@/lib/types";
 import Link from "next/link";
 
@@ -32,7 +32,7 @@ export default async function TagsPage() {
           {tags.map((tag) => (
             <Link
               key={tag.name}
-              href={`/tags/${encodeURIComponent(tag.name)}`}
+              href={`/tags/${encodeURIComponent(tagNameToSlug(tag.name))}`}
             >
               <Badge
                 variant="tag"

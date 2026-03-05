@@ -4,9 +4,10 @@ import { HeroSaleBanner } from "@/components/hero-sale-banner";
 import { FeaturedBanners } from "@/components/featured-banners";
 import { HorizontalScrollSection } from "@/components/horizontal-scroll-section";
 import {
-  VoiceActorFeatureCarousel,
-  VoiceActorFeatureGridCarousel,
-} from "@/components/voice-actor-feature-carousel";
+  UnifiedFeatureCarousel,
+  UnifiedFeatureGridCarousel,
+} from "@/components/feature-carousel";
+import { interleaveFeatures } from "@/lib/feature-utils";
 import { Badge } from "@/components/ui/badge";
 import {
   getNewWorks,
@@ -24,6 +25,8 @@ import {
   getWorkById,
   getWorksByIds,
   getAllVoiceActorFeatures,
+  getAllSeihekiFeatures,
+  tagNameToSlug,
 } from "@/lib/db";
 import { dbWorkToWork, dbActorToActor, dbTagToTag } from "@/lib/types";
 import Link from "next/link";
@@ -45,6 +48,7 @@ export default async function Home() {
     saleFeature,
     dailyRecommendation,
     voiceActorFeatures,
+    seihekiFeatures,
   ] = await Promise.all([
     getSaleWorks(12),
     getNewWorks(12),
@@ -59,6 +63,7 @@ export default async function Home() {
     getLatestSaleFeature(),
     getLatestDailyRecommendation(),
     getAllVoiceActorFeatures(),
+    getAllSeihekiFeatures(),
   ]);
 
   // セール特集のメイン作品のサムネイルを取得
@@ -110,19 +115,20 @@ export default async function Home() {
           recommendationDate={dailyRecommendation?.target_date}
         />
 
-        {/* 声優特集カルーセル */}
-        {voiceActorFeatures.length > 0 && (
-          <div className="mb-6">
-            {/* スマホ: カルーセル */}
-            <div className="md:hidden">
-              <VoiceActorFeatureCarousel voiceActorFeatures={voiceActorFeatures} />
+        {/* 声優特集 & ジャンル特集（交互カルーセル） */}
+        {(voiceActorFeatures.length > 0 || seihekiFeatures.length > 0) && (() => {
+          const featureItems = interleaveFeatures(voiceActorFeatures, seihekiFeatures);
+          return (
+            <div className="mb-6">
+              <div className="md:hidden">
+                <UnifiedFeatureCarousel items={featureItems} />
+              </div>
+              <div className="hidden md:block">
+                <UnifiedFeatureGridCarousel items={featureItems} />
+              </div>
             </div>
-            {/* PC: 横スライドカルーセル（5カラム表示） */}
-            <div className="hidden md:block">
-              <VoiceActorFeatureGridCarousel voiceActorFeatures={voiceActorFeatures} />
-            </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* ボイス・ASMRランキング */}
         {voiceRanking.length > 0 && (
@@ -257,7 +263,7 @@ export default async function Home() {
               {tags.slice(0, 20).map((tag) => (
                 <Link
                   key={tag.name}
-                  href={`/tags/${encodeURIComponent(tag.name)}`}
+                  href={`/tags/${encodeURIComponent(tagNameToSlug(tag.name))}`}
                 >
                   <Badge
                     variant="tag"

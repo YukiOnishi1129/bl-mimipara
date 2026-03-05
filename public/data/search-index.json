@@ -115,64 +115,6 @@
     "saleEnd": null
   },
   {
-    "id": 91,
-    "t": "ありきたりで愚鈍な僕に贈る物語",
-    "c": "パムパタール",
-    "cv": [],
-    "tg": [
-      "シリアス",
-      "BL",
-      "アドベンチャー",
-      "歳の差",
-      "体格差"
-    ],
-    "p": 1760,
-    "dp": 1760,
-    "dr": null,
-    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_724724/d_724724pr.jpg",
-    "cat": "game",
-    "rel": "2026-02-25",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 31,
-    "rt": null,
-    "rc": null,
-    "saleEnd": null
-  },
-  {
-    "id": 68,
-    "t": "魔法少女★ピュアきゅんハート",
-    "c": "舎生取義",
-    "cv": [
-      "牛蛙キタロウ",
-      "熊田乱",
-      "手動歯ブラシ",
-      "大野剣"
-    ],
-    "tg": [
-      "魔法少女",
-      "百合",
-      "ASMR",
-      "ガチムチ",
-      "淫語"
-    ],
-    "p": 1650,
-    "dp": 1650,
-    "dr": null,
-    "img": "https://doujin-assets.dmm.co.jp/digital/voice/d_735078/d_735078pr.jpg",
-    "cat": "asmr",
-    "dur": 113,
-    "rel": "2026-02-25",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 8,
-    "rt": null,
-    "rc": null,
-    "saleEnd": null
-  },
-  {
     "id": 27,
     "t": "魔法少女★ピュアきゅんハート",
     "c": "舎生取義",
@@ -197,9 +139,35 @@
     "dur": 113,
     "rel": "2026-02-25",
     "dl": true,
-    "fa": false,
+    "fa": true,
     "dlRank": 27,
-    "faRank": null,
+    "faRank": 8,
+    "rt": null,
+    "rc": null,
+    "saleEnd": null
+  },
+  {
+    "id": 91,
+    "t": "ありきたりで愚鈍な僕に贈る物語",
+    "c": "パムパタール",
+    "cv": [],
+    "tg": [
+      "シリアス",
+      "BL",
+      "アドベンチャー",
+      "歳の差",
+      "体格差"
+    ],
+    "p": 1760,
+    "dp": 1760,
+    "dr": null,
+    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_724724/d_724724pr.jpg",
+    "cat": "game",
+    "rel": "2026-02-25",
+    "dl": false,
+    "fa": true,
+    "dlRank": null,
+    "faRank": 31,
     "rt": null,
     "rc": null,
     "saleEnd": null
@@ -231,6 +199,36 @@
     "saleEnd": null
   },
   {
+    "id": 3,
+    "t": "ボイスドラマ 限界エロBL漫画家、ストーカー攻め様にロックオンされる",
+    "c": "すめし屋さん",
+    "cv": [
+      "井伊さん",
+      "露さん"
+    ],
+    "tg": [
+      "ストーカー",
+      "エロBL",
+      "バイノーラル",
+      "年下攻め",
+      "甘々"
+    ],
+    "p": 1683,
+    "dp": 1870,
+    "dr": 10,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ01495000/RJ01494136_img_main.jpg",
+    "cat": "asmr",
+    "dur": 98,
+    "rel": "2026-02-21",
+    "dl": true,
+    "fa": true,
+    "dlRank": 3,
+    "faRank": 1,
+    "rt": 4.44,
+    "rc": 9,
+    "saleEnd": "2026-03-04 23:59:00"
+  },
+  {
     "id": 88,
     "t": "初×初×初【初デートで初夜で初恋で】 〜ぼっち男子くん、旅館でマッチョなネトゲ友達とドキトロSEX！？〜",
     "c": "エラドボイス",
@@ -256,31 +254,6 @@
     "fa": true,
     "dlRank": null,
     "faRank": 28,
-    "rt": null,
-    "rc": null,
-    "saleEnd": null
-  },
-  {
-    "id": 61,
-    "t": "ボイスドラマ 限界エロBL漫画家、ストーカー攻め様にロックオンされる",
-    "c": "すめし屋さん",
-    "cv": [],
-    "tg": [
-      "ラブラブ",
-      "バイノーラル",
-      "メス堕ち"
-    ],
-    "p": 1870,
-    "dp": 1870,
-    "dr": null,
-    "img": "https://doujin-assets.dmm.co.jp/digital/voice/d_733212/d_733212pr.jpg",
-    "cat": "asmr",
-    "dur": 98,
-    "rel": "2026-02-21",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 1,
     "rt": null,
     "rc": null,
     "saleEnd": null
@@ -370,36 +343,6 @@
     "rt": 4.95,
     "rc": 21,
     "saleEnd": "2026-03-06 23:59:00"
-  },
-  {
-    "id": 3,
-    "t": "ボイスドラマ 限界エロBL漫画家、ストーカー攻め様にロックオンされる",
-    "c": "すめし屋さん",
-    "cv": [
-      "井伊さん",
-      "露さん"
-    ],
-    "tg": [
-      "ストーカー",
-      "エロBL",
-      "バイノーラル",
-      "年下攻め",
-      "甘々"
-    ],
-    "p": 1683,
-    "dp": 1870,
-    "dr": 10,
-    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ01495000/RJ01494136_img_main.jpg",
-    "cat": "asmr",
-    "dur": 98,
-    "rel": "2026-02-21",
-    "dl": true,
-    "fa": false,
-    "dlRank": 3,
-    "faRank": null,
-    "rt": 4.44,
-    "rc": 9,
-    "saleEnd": "2026-03-04 23:59:00"
   },
   {
     "id": 11,
@@ -760,36 +703,6 @@
     "saleEnd": null
   },
   {
-    "id": 99,
-    "t": "兄遊び",
-    "c": "Tennenouji",
-    "cv": [
-      "蒼井夕真",
-      "宮島浩二",
-      "ナナモモ"
-    ],
-    "tg": [
-      "近親相姦",
-      "焦らし",
-      "辱め",
-      "おさわり",
-      "成人向け"
-    ],
-    "p": 1771,
-    "dp": 2530,
-    "dr": 30,
-    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_720694/d_720694pr.jpg",
-    "cat": "game",
-    "rel": "2026-01-10",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 39,
-    "rt": null,
-    "rc": null,
-    "saleEnd": "2026-03-30 23:59:59"
-  },
-  {
     "id": 14,
     "t": "カントボーイ化した俺がルームメイト(童貞)とセックスしたら 〜童貞のくせにねちっこすぎ前戯でクリも中もトロトロ、潮吹き連続絶頂〜",
     "c": "Notte",
@@ -1005,19 +918,19 @@
       "足コキ",
       "アナル"
     ],
-    "p": 2530,
+    "p": 1771,
     "dp": 2530,
-    "dr": null,
+    "dr": 30,
     "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ01529000/RJ01528706_img_main.jpg",
     "cat": "game",
     "rel": "2025-12-26",
     "dl": true,
-    "fa": false,
+    "fa": true,
     "dlRank": 4,
-    "faRank": null,
+    "faRank": 39,
     "rt": 3.46,
     "rc": 26,
-    "saleEnd": null
+    "saleEnd": "2026-03-30 23:59:59"
   },
   {
     "id": 25,
@@ -1541,32 +1454,6 @@
     "faRank": 40,
     "rt": null,
     "rc": null,
-    "saleEnd": "2026-03-30 23:59:59"
-  },
-  {
-    "id": 97,
-    "t": "ラッキードッグ1",
-    "c": "Tennenouji",
-    "cv": [],
-    "tg": [
-      "BL",
-      "アドベンチャー",
-      "ヤクザ",
-      "裏社会",
-      "成人向け"
-    ],
-    "p": 2156,
-    "dp": 3080,
-    "dr": 30,
-    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_668360/d_668360pr.jpg",
-    "cat": "game",
-    "rel": "2025-10-02",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 37,
-    "rt": 3,
-    "rc": 1,
     "saleEnd": "2026-03-30 23:59:59"
   },
   {
@@ -2213,32 +2100,6 @@
     "saleEnd": "2026-03-30 23:59:59"
   },
   {
-    "id": 93,
-    "t": "大穢-完全版-",
-    "c": "ADELTA",
-    "cv": [],
-    "tg": [
-      "ホラー",
-      "BL",
-      "ミステリー",
-      "アドベンチャー",
-      "成人向け"
-    ],
-    "p": 4400,
-    "dp": 4400,
-    "dr": null,
-    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_426055/d_426055pr.jpg",
-    "cat": "game",
-    "rel": "2024-10-25",
-    "dl": false,
-    "fa": true,
-    "dlRank": null,
-    "faRank": 33,
-    "rt": 4.77,
-    "rc": 22,
-    "saleEnd": null
-  },
-  {
     "id": 31,
     "t": "大穢-完全版-",
     "c": "ADELTA",
@@ -2257,9 +2118,9 @@
     "cat": "game",
     "rel": "2024-10-25",
     "dl": true,
-    "fa": false,
+    "fa": true,
     "dlRank": 1,
-    "faRank": null,
+    "faRank": 33,
     "rt": 4.85,
     "rc": 738,
     "saleEnd": null
@@ -2953,6 +2814,37 @@
     "saleEnd": null
   },
   {
+    "id": 36,
+    "t": "ラッキードッグ1",
+    "c": "Tennenouji",
+    "cv": [
+      "声優A",
+      "声優B",
+      "声優C",
+      "声優D"
+    ],
+    "tg": [
+      "ヤクザ",
+      "ボーイズラブ",
+      "歴史/時代物",
+      "マフィア",
+      "脱獄"
+    ],
+    "p": 1540,
+    "dp": 3080,
+    "dr": 50,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ295000/RJ294173_img_main.jpg",
+    "cat": "game",
+    "rel": "2020-10-10",
+    "dl": true,
+    "fa": true,
+    "dlRank": 6,
+    "faRank": 37,
+    "rt": 4.9,
+    "rc": 401,
+    "saleEnd": "2026-03-12 13:59:00"
+  },
+  {
     "id": 51,
     "t": "みらくるのーとん+只今増量中!!",
     "c": "Tennenouji",
@@ -3015,37 +2907,6 @@
     "saleEnd": "2026-03-12 13:59:00"
   },
   {
-    "id": 36,
-    "t": "ラッキードッグ1",
-    "c": "Tennenouji",
-    "cv": [
-      "声優A",
-      "声優B",
-      "声優C",
-      "声優D"
-    ],
-    "tg": [
-      "ヤクザ",
-      "ボーイズラブ",
-      "歴史/時代物",
-      "マフィア",
-      "脱獄"
-    ],
-    "p": 1540,
-    "dp": 3080,
-    "dr": 50,
-    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ295000/RJ294173_img_main.jpg",
-    "cat": "game",
-    "rel": "2020-10-10",
-    "dl": true,
-    "fa": false,
-    "dlRank": 6,
-    "faRank": null,
-    "rt": 4.9,
-    "rc": 401,
-    "saleEnd": "2026-03-12 13:59:00"
-  },
-  {
     "id": 40,
     "t": "ウウウルトラC",
     "c": "ADELTA",
@@ -3070,30 +2931,91 @@
     "saleEnd": null
   },
   {
-    "id": 95,
-    "t": "古書店街の橋姫",
-    "c": "ADELTA",
-    "cv": [],
-    "tg": [
-      "BL",
-      "アドベンチャー",
-      "ミステリー",
-      "女性向け",
-      "成人向け"
+    "id": 125,
+    "t": "ケンカップル～reversible relation～リベンジリレーション!～辰季攻めの場合～(CV:高坂篤志、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "高坂篤志",
+      "野上翔"
     ],
-    "p": 2640,
-    "dp": 2640,
+    "tg": [
+      "ケンカップル",
+      "学園",
+      "ボーイズラブ",
+      "リベンジ"
+    ],
+    "p": 550,
+    "dp": 550,
     "dr": null,
-    "img": "https://doujin-assets.dmm.co.jp/digital/game/d_147246/d_147246pr.jpg",
-    "cat": "game",
-    "rel": "2019-01-11",
-    "dl": false,
-    "fa": true,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ250000/RJ249046_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2019-03-26",
+    "dl": true,
+    "fa": false,
     "dlRank": null,
-    "faRank": 35,
-    "rt": 4.56,
-    "rc": 9,
+    "faRank": null,
+    "rt": 4.33,
+    "rc": 27,
     "saleEnd": null
+  },
+  {
+    "id": 122,
+    "t": "恋するヤンキー2 お仕置き×××編(CV:中島ヨシキ、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "中島ヨシキ",
+      "野上翔",
+      "植木慎英"
+    ],
+    "tg": [
+      "年下攻め",
+      "不良/ヤンキー",
+      "純愛",
+      "ボーイズラブ",
+      "ロマンス"
+    ],
+    "p": 550,
+    "dp": 550,
+    "dr": null,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ249000/RJ248760_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2019-03-22",
+    "dl": true,
+    "fa": false,
+    "dlRank": null,
+    "faRank": null,
+    "rt": 4.63,
+    "rc": 75,
+    "saleEnd": null
+  },
+  {
+    "id": 126,
+    "t": "ケンカップル reversible relation(CV:高坂篤志、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "高坂篤志",
+      "野上翔",
+      "菊池幸利"
+    ],
+    "tg": [
+      "ボーイズラブ",
+      "学生",
+      "制服",
+      "ケンカップル"
+    ],
+    "p": 1391,
+    "dp": 2530,
+    "dr": 45,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ247000/RJ246463_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2019-02-20",
+    "dl": true,
+    "fa": false,
+    "dlRank": null,
+    "faRank": null,
+    "rt": 4.6,
+    "rc": 20,
+    "saleEnd": "2026-03-12 13:59:00"
   },
   {
     "id": 52,
@@ -3121,6 +3043,92 @@
     "faRank": null,
     "rt": 4.64,
     "rc": 380,
+    "saleEnd": "2026-03-12 13:59:00"
+  },
+  {
+    "id": 124,
+    "t": "恋するヤンキー2(CV:中島ヨシキ、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "中島ヨシキ",
+      "野上翔",
+      "植木慎英"
+    ],
+    "tg": [
+      "年下攻め",
+      "不良/ヤンキー",
+      "純愛",
+      "ボーイズラブ",
+      "ロマンス"
+    ],
+    "p": 1518,
+    "dp": 2530,
+    "dr": 40,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ235000/RJ234793_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2018-09-17",
+    "dl": true,
+    "fa": false,
+    "dlRank": null,
+    "faRank": null,
+    "rt": 4.71,
+    "rc": 52,
+    "saleEnd": "2026-03-12 13:59:00"
+  },
+  {
+    "id": 121,
+    "t": "恋するヤンキー 秘密の課外授業編(CV:中島ヨシキ、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "中島ヨシキ",
+      "野上翔"
+    ],
+    "tg": [
+      "不良",
+      "ヤンキー",
+      "純愛",
+      "ボーイズラブ"
+    ],
+    "p": 550,
+    "dp": 550,
+    "dr": null,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ228000/RJ227721_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2018-07-03",
+    "dl": true,
+    "fa": false,
+    "dlRank": null,
+    "faRank": null,
+    "rt": 4.6,
+    "rc": 91,
+    "saleEnd": null
+  },
+  {
+    "id": 123,
+    "t": "恋するヤンキー(CV:中島ヨシキ、野上翔)",
+    "c": "KZentertainment",
+    "cv": [
+      "中島ヨシキ",
+      "野上翔"
+    ],
+    "tg": [
+      "不良",
+      "ヤンキー",
+      "純愛",
+      "ボーイズラブ"
+    ],
+    "p": 1518,
+    "dp": 2530,
+    "dr": 40,
+    "img": "https://img.dlsite.jp/modpub/images2/work/doujin/RJ221000/RJ220715_img_main.jpg",
+    "cat": "asmr",
+    "rel": "2018-03-09",
+    "dl": true,
+    "fa": false,
+    "dlRank": null,
+    "faRank": null,
+    "rt": 4.68,
+    "rc": 60,
     "saleEnd": "2026-03-12 13:59:00"
   },
   {
@@ -3239,9 +3247,9 @@
     "cat": "game",
     "rel": "2016-09-24",
     "dl": true,
-    "fa": false,
+    "fa": true,
     "dlRank": 3,
-    "faRank": null,
+    "faRank": 35,
     "rt": 4.83,
     "rc": 918,
     "saleEnd": null

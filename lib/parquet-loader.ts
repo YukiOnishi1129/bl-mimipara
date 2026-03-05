@@ -17,6 +17,7 @@ let circlesCache: DbCircle[] | null = null;
 let dailyRecommendationsCache: DbDailyRecommendation[] | null = null;
 let saleFeaturesCache: DbSaleFeature[] | null = null;
 let voiceActorFeaturesCache: DbVoiceActorFeature[] | null = null;
+let seihekiFeaturesCache: DbSeihekiFeature[] | null = null;
 
 // 型定義
 export interface DbWork {
@@ -154,6 +155,31 @@ export interface DbVoiceActorFeature {
   posted_at: string | null;
 }
 
+export interface DbSeihekiFeature {
+  id: number;
+  name: string;
+  slug: string;
+  headline: string | null;
+  description: string | null;
+  representative_work_id: number | null;
+  representative_thumbnail_url: string | null;
+  asmr_works:
+    | { work_id: number; reason: string; target_audience: string; thumbnail_url: string | null }[]
+    | null;
+  game_works:
+    | { work_id: number; reason: string; target_audience: string; thumbnail_url: string | null }[]
+    | null;
+  sale_works:
+    | { work_id: number; discount_rate: number; thumbnail_url: string | null }[]
+    | null;
+  total_work_count: number;
+  avg_rating: number | null;
+  sale_count: number;
+  match_tags: string[] | null;
+  is_active: number;
+  posted_at: string | null;
+}
+
 /**
  * JSONキャッシュファイルを読み込む
  */
@@ -235,6 +261,21 @@ export async function getVoiceActorFeaturesData(): Promise<
 }
 
 /**
+ * 性癖特集データを取得（キャッシュ付き）
+ */
+export async function getSeihekiFeaturesData(): Promise<DbSeihekiFeature[]> {
+  if (seihekiFeaturesCache === null) {
+    seihekiFeaturesCache = loadJson<DbSeihekiFeature>(
+      "seiheki_features.json"
+    );
+    console.log(
+      `Loaded ${seihekiFeaturesCache.length} seiheki features from cache`
+    );
+  }
+  return seihekiFeaturesCache;
+}
+
+/**
  * キャッシュをクリアする（テスト用）
  */
 export function clearCache(): void {
@@ -243,4 +284,5 @@ export function clearCache(): void {
   dailyRecommendationsCache = null;
   saleFeaturesCache = null;
   voiceActorFeaturesCache = null;
+  seihekiFeaturesCache = null;
 }

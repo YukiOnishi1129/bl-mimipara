@@ -21,6 +21,7 @@ import {
   getSimilarWorksByTags,
   getVoiceActorFeatureByName,
   getWorksByIds,
+  tagNameToSlug,
 } from "@/lib/db";
 import { dbWorkToWork } from "@/lib/types";
 import Link from "next/link";
@@ -393,7 +394,7 @@ export default async function WorkDetailPage({ params }: Props) {
             {work.aiTags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {work.aiTags.map((tag) => (
-                  <Link key={tag} href={`/tags/${encodeURIComponent(tag)}`}>
+                  <Link key={tag} href={`/tags/${encodeURIComponent(tagNameToSlug(tag))}`}>
                     <Badge variant="tag" className="cursor-pointer hover:opacity-80">{tag}</Badge>
                   </Link>
                 ))}

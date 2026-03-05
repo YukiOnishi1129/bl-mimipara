@@ -86,9 +86,11 @@ async function fetchParquet(filename) {
 async function main() {
   console.log("Fetching data from R2 Parquet...");
 
-  const [works, circles] = await Promise.all([
+  const [works, circles, voiceActorFeatures, seihekiFeatures] = await Promise.all([
     fetchParquet("works.parquet"),
     fetchParquet("circles.parquet"),
+    fetchParquet("voice_actor_features.parquet").catch(() => []),
+    fetchParquet("seiheki_features.parquet").catch(() => []),
   ]);
 
   // 利用可能な作品のみ
@@ -125,8 +127,18 @@ async function main() {
     .filter((c) => circleIdsWithWorks.has(c.id))
     .map((c) => c.name);
 
+  // 声優特集名一覧
+  const voiceActorFeatureNames = voiceActorFeatures
+    .filter((f) => f.is_active === 1)
+    .map((f) => f.name);
+
+  // 性癖特集名一覧
+  const seihekiFeatureNames = seihekiFeatures
+    .filter((f) => f.is_active === 1)
+    .map((f) => f.name);
+
   console.log(
-    `[Sitemap] Works: ${workIds.length}, Actors: ${actorNames.size}, Tags: ${tagNames.size}, Circles: ${circleNames.length}`
+    `[Sitemap] Works: ${workIds.length}, Actors: ${actorNames.size}, Tags: ${tagNames.size}, Circles: ${circleNames.length}, CV Features: ${voiceActorFeatureNames.length}, Seiheki Features: ${seihekiFeatureNames.length}`
   );
 
   const today = new Date().toISOString().split("T")[0];
@@ -142,6 +154,8 @@ async function main() {
     { path: "/tags/", priority: "0.7", changefreq: "weekly" },
     { path: "/circles/", priority: "0.7", changefreq: "weekly" },
     { path: "/privacy/", priority: "0.3", changefreq: "monthly" },
+    { path: "/tokushu/cv/", priority: "0.7", changefreq: "weekly" },
+    { path: "/tokushu/seiheki/", priority: "0.7", changefreq: "weekly" },
   ];
 
   for (const page of staticPages) {
@@ -174,11 +188,15 @@ async function main() {
     </url>`);
   }
 
-  // タグページ
+  // タグページ（スラッシュを-に変換してURL安全に）
+  const tagSlugs = new Set();
   for (const name of tagNames) {
+    tagSlugs.add(name.replace(/\//g, "-"));
+  }
+  for (const slug of tagSlugs) {
     urls.push(`
     <url>
-      <loc>${BASE_URL}/tags/${encodeURIComponent(name)}/</loc>
+      <loc>${BASE_URL}/tags/${encodeURIComponent(slug)}/</loc>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
     </url>`);
@@ -191,6 +209,26 @@ async function main() {
       <loc>${BASE_URL}/circles/${encodeURIComponent(name)}/</loc>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
+    </url>`);
+  }
+
+  // 声優特集ページ
+  for (const name of voiceActorFeatureNames) {
+    urls.push(`
+    <url>
+      <loc>${BASE_URL}/tokushu/cv/${encodeURIComponent(name)}/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>`);
+  }
+
+  // 性癖特集ページ
+  for (const name of seihekiFeatureNames) {
+    urls.push(`
+    <url>
+      <loc>${BASE_URL}/tokushu/seiheki/${encodeURIComponent(name)}/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
     </url>`);
   }
 

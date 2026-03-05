@@ -11,11 +11,13 @@ import {
   getDailyRecommendationsData,
   getSaleFeaturesData,
   getVoiceActorFeaturesData,
+  getSeihekiFeaturesData,
   type DbWork as ParquetDbWork,
   type DbCircle as ParquetDbCircle,
   type DbDailyRecommendation as ParquetDbDailyRecommendation,
   type DbSaleFeature as ParquetDbSaleFeature,
   type DbVoiceActorFeature as ParquetDbVoiceActorFeature,
+  type DbSeihekiFeature as ParquetDbSeihekiFeature,
 } from "./parquet-loader";
 
 // 型のエクスポート（互換性維持）
@@ -24,6 +26,7 @@ export type DbCircle = ParquetDbCircle;
 export type DbDailyRecommendation = ParquetDbDailyRecommendation;
 export type DbSaleFeature = ParquetDbSaleFeature;
 export type DbVoiceActorFeature = ParquetDbVoiceActorFeature;
+export type DbSeihekiFeature = ParquetDbSeihekiFeature;
 
 export interface DbActor {
   name: string;
@@ -428,8 +431,22 @@ export async function getAllActorNames(): Promise<string[]> {
   return Array.from(actorNames);
 }
 
-// 全タグ名を取得（generateStaticParams用）
-export async function getAllTagNames(): Promise<string[]> {
+// タグ名をURLセーフなスラグに変換（ / を - に置換）
+export function tagNameToSlug(name: string): string {
+  return name.replace(/\//g, "-");
+}
+
+// スラグから元のタグ名を逆引き
+export async function tagSlugToName(slug: string): Promise<string | null> {
+  const allNames = await getAllTagNamesRaw();
+  // 完全一致
+  if (allNames.includes(slug)) return slug;
+  // スラグ変換して一致するものを探す
+  return allNames.find((name) => tagNameToSlug(name) === slug) || null;
+}
+
+// 全タグ名を取得（内部用、変換なし）
+async function getAllTagNamesRaw(): Promise<string[]> {
   const works = await getWorks();
   const available = filterAvailable(works);
   const tagNames = new Set<string>();
@@ -441,6 +458,14 @@ export async function getAllTagNames(): Promise<string[]> {
     }
   }
   return Array.from(tagNames);
+}
+
+// 全タグ名を取得（generateStaticParams用、スラグ化済み）
+export async function getAllTagNames(): Promise<string[]> {
+  const names = await getAllTagNamesRaw();
+  // スラグ化して重複を除去
+  const slugs = new Set(names.map(tagNameToSlug));
+  return Array.from(slugs);
 }
 
 // 関連タグを取得（同じ作品に付いているタグを集計）
@@ -719,6 +744,34 @@ export async function getAllVoiceActorFeatures(): Promise<
 // 全声優特集名を取得（generateStaticParams用）
 export async function getAllVoiceActorFeatureNames(): Promise<string[]> {
   const features = await getVoiceActorFeaturesData();
+  return features.filter((f) => f.is_active === 1).map((f) => f.name);
+}
+
+// =============================================================================
+// 性癖特集
+// =============================================================================
+
+// 性癖名で特集データを取得
+export async function getSeihekiFeatureByName(
+  name: string
+): Promise<DbSeihekiFeature | null> {
+  const features = await getSeihekiFeaturesData();
+  return (
+    features.find((f) => f.name === name && f.is_active === 1) || null
+  );
+}
+
+// 全性癖特集データを取得（作品数順）
+export async function getAllSeihekiFeatures(): Promise<DbSeihekiFeature[]> {
+  const features = await getSeihekiFeaturesData();
+  return features
+    .filter((f) => f.is_active === 1)
+    .sort((a, b) => b.total_work_count - a.total_work_count);
+}
+
+// 全性癖特集名を取得（generateStaticParams用）
+export async function getAllSeihekiFeatureNames(): Promise<string[]> {
+  const features = await getSeihekiFeaturesData();
   return features.filter((f) => f.is_active === 1).map((f) => f.name);
 }
 
