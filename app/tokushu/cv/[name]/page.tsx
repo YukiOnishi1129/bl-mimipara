@@ -120,18 +120,6 @@ function getSampleUrl(work: Work): string | null {
   return null;
 }
 
-function getCategoryIcon(work: Work) {
-  if (work.category === "ゲーム") {
-    return <Gamepad2 className="h-3 w-3 mr-1" />;
-  }
-  return <Headphones className="h-3 w-3 mr-1" />;
-}
-
-function getCategoryLabel(work: Work) {
-  if (work.category === "ゲーム") return "ゲーム";
-  return "ASMR";
-}
-
 function RecommendationCard({
   work,
   reason,
@@ -143,6 +131,7 @@ function RecommendationCard({
   targetAudience: string;
   rank: number;
 }) {
+  const isGame = work.genre === "ゲーム";
   const rating = work.ratingDlsite || work.ratingFanza || 0;
   const reviewCount = work.reviewCountDlsite || work.reviewCountFanza || 0;
   const originalPrice = work.priceDlsite || work.priceFanza || 0;
@@ -168,8 +157,8 @@ function RecommendationCard({
               {rank}
             </div>
             <Badge variant="secondary" className="text-xs">
-              {getCategoryIcon(work)}
-              {getCategoryLabel(work)}
+              {isGame ? <Gamepad2 className="h-3 w-3 mr-1" /> : <Headphones className="h-3 w-3 mr-1" />}
+              {isGame ? "ゲーム" : "ASMR"}
             </Badge>
           </div>
           {work.isOnSale && work.maxDiscountRate && (
@@ -190,7 +179,7 @@ function RecommendationCard({
               loading="lazy"
               className="h-full w-full object-cover transition-transform hover:scale-105"
             />
-            {work.category === "ゲーム"
+            {isGame
               ? work.killerWords.playTimeHours && (
                   <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/70 text-white px-2 py-1 rounded text-xs">
                     <Clock className="h-3 w-3" />

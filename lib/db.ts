@@ -775,6 +775,22 @@ export async function getAllSeihekiFeatureNames(): Promise<string[]> {
   return features.filter((f) => f.is_active === 1).map((f) => f.name);
 }
 
+// slugで性癖特集データを取得
+export async function getSeihekiFeatureBySlug(
+  slug: string
+): Promise<DbSeihekiFeature | null> {
+  const features = await getSeihekiFeaturesData();
+  return (
+    features.find((f) => f.slug === slug && f.is_active === 1) || null
+  );
+}
+
+// 全性癖特集slugを取得（generateStaticParams用）
+export async function getAllSeihekiFeatureSlugs(): Promise<string[]> {
+  const features = await getSeihekiFeaturesData();
+  return features.filter((f) => f.is_active === 1).map((f) => f.slug);
+}
+
 // DB接続を閉じる（互換性のためのスタブ）
 export async function closeDb(): Promise<void> {
   // Parquetベースなので何もしない

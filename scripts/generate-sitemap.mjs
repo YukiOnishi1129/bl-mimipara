@@ -132,13 +132,13 @@ async function main() {
     .filter((f) => f.is_active === 1)
     .map((f) => f.name);
 
-  // 性癖特集名一覧
-  const seihekiFeatureNames = seihekiFeatures
+  // 性癖特集slug一覧
+  const seihekiFeatureSlugs = seihekiFeatures
     .filter((f) => f.is_active === 1)
-    .map((f) => f.name);
+    .map((f) => f.slug);
 
   console.log(
-    `[Sitemap] Works: ${workIds.length}, Actors: ${actorNames.size}, Tags: ${tagNames.size}, Circles: ${circleNames.length}, CV Features: ${voiceActorFeatureNames.length}, Seiheki Features: ${seihekiFeatureNames.length}`
+    `[Sitemap] Works: ${workIds.length}, Actors: ${actorNames.size}, Tags: ${tagNames.size}, Circles: ${circleNames.length}, CV Features: ${voiceActorFeatureNames.length}, Seiheki Features: ${seihekiFeatureSlugs.length}`
   );
 
   const today = new Date().toISOString().split("T")[0];
@@ -223,10 +223,10 @@ async function main() {
   }
 
   // 性癖特集ページ
-  for (const name of seihekiFeatureNames) {
+  for (const slug of seihekiFeatureSlugs) {
     urls.push(`
     <url>
-      <loc>${BASE_URL}/tokushu/seiheki/${encodeURIComponent(name)}/</loc>
+      <loc>${BASE_URL}/tokushu/seiheki/${slug}/</loc>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>`);

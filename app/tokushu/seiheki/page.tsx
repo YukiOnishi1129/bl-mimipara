@@ -119,7 +119,7 @@ export default async function SeihekiTokushuListPage() {
             {allFeatures.map((feature) => (
               <Link
                 key={feature.name}
-                href={`/tokushu/seiheki/${encodeURIComponent(feature.name)}`}
+                href={`/tokushu/seiheki/${feature.slug}`}
               >
                 <Card className="overflow-hidden border border-border hover:border-primary/50 transition-all">
                   <div className="relative aspect-[16/9] overflow-hidden bg-muted">

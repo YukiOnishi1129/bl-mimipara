@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
-  getSeihekiFeatureByName,
-  getAllSeihekiFeatureNames,
+  getSeihekiFeatureBySlug,
+  getAllSeihekiFeatureSlugs,
   getWorksByIds,
   getWorksByTag,
   getLatestSaleFeature,
@@ -39,32 +39,31 @@ import { FeaturedBanners } from "@/components/featured-banners";
 import { AffiliateLink } from "@/components/affiliate-link";
 
 interface Props {
-  params: Promise<{ name: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-export async function generateStaticParams(): Promise<{ name: string }[]> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   try {
-    const names = await getAllSeihekiFeatureNames();
+    const slugs = await getAllSeihekiFeatureSlugs();
     console.log(
-      `[Seiheki Tokushu] generateStaticParams: ${names.length} featured genres found`,
+      `[Seiheki Tokushu] generateStaticParams: ${slugs.length} featured genres found`,
     );
-    if (names.length === 0) {
-      return [{ name: "__placeholder__" }];
+    if (slugs.length === 0) {
+      return [{ slug: "__placeholder__" }];
     }
-    return names.map((name) => ({ name }));
+    return slugs.map((slug) => ({ slug }));
   } catch (error) {
     console.error("[Seiheki Tokushu] Error in generateStaticParams:", error);
-    return [{ name: "__placeholder__" }];
+    return [{ slug: "__placeholder__" }];
   }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { name } = await params;
-  const decodedName = decodeURIComponent(name);
-  const feature = await getSeihekiFeatureByName(decodedName);
+  const { slug } = await params;
+  const feature = await getSeihekiFeatureBySlug(slug);
 
   if (!feature) {
     return { title: "ジャンル特集 | みみぱら" };
@@ -120,18 +119,6 @@ function getSampleUrl(work: Work): string | null {
   return null;
 }
 
-function getCategoryIcon(work: Work) {
-  if (work.category === "ゲーム") {
-    return <Gamepad2 className="h-3 w-3 mr-1" />;
-  }
-  return <Headphones className="h-3 w-3 mr-1" />;
-}
-
-function getCategoryLabel(work: Work) {
-  if (work.category === "ゲーム") return "ゲーム";
-  return "ASMR";
-}
-
 function RecommendationCard({
   work,
   reason,
@@ -143,6 +130,7 @@ function RecommendationCard({
   targetAudience: string;
   rank: number;
 }) {
+  const isGame = work.genre === "ゲーム";
   const rating = work.ratingDlsite || work.ratingFanza || 0;
   const reviewCount = work.reviewCountDlsite || work.reviewCountFanza || 0;
   const originalPrice = work.priceDlsite || work.priceFanza || 0;
@@ -168,8 +156,8 @@ function RecommendationCard({
               {rank}
             </div>
             <Badge variant="secondary" className="text-xs">
-              {getCategoryIcon(work)}
-              {getCategoryLabel(work)}
+              {isGame ? <Gamepad2 className="h-3 w-3 mr-1" /> : <Headphones className="h-3 w-3 mr-1" />}
+              {isGame ? "ゲーム" : "ASMR"}
             </Badge>
           </div>
           {work.isOnSale && work.maxDiscountRate && (
@@ -190,7 +178,7 @@ function RecommendationCard({
               loading="lazy"
               className="h-full w-full object-cover transition-transform hover:scale-105"
             />
-            {work.category === "ゲーム"
+            {isGame
               ? work.killerWords.playTimeHours && (
                   <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/70 text-white px-2 py-1 rounded text-xs">
                     <Clock className="h-3 w-3" />
@@ -377,9 +365,8 @@ function TokushuWorkCard({ work }: { work: Work }) {
 }
 
 export default async function SeihekiTokushuPage({ params }: Props) {
-  const { name } = await params;
-  const decodedName = decodeURIComponent(name);
-  const feature = await getSeihekiFeatureByName(decodedName);
+  const { slug } = await params;
+  const feature = await getSeihekiFeatureBySlug(slug);
 
   if (!feature) {
     notFound();
@@ -681,7 +668,7 @@ export default async function SeihekiTokushuPage({ params }: Props) {
               {otherSeihekiFeatures.map((seiheki) => (
                 <Link
                   key={seiheki.name}
-                  href={`/tokushu/seiheki/${encodeURIComponent(seiheki.name)}`}
+                  href={`/tokushu/seiheki/${seiheki.slug}`}
                 >
                   <Card className="overflow-hidden border border-border hover:border-primary/50 transition-all">
                     <div className="relative aspect-[16/9] overflow-hidden bg-muted">

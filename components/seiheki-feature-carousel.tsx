@@ -15,7 +15,7 @@ interface SeihekiFeatureCarouselProps {
 // スマホ用カルーセルアイテム
 function CarouselItem({ feature }: { feature: DbSeihekiFeature }) {
   return (
-    <Link href={`/tokushu/seiheki/${encodeURIComponent(feature.name)}`}>
+    <Link href={`/tokushu/seiheki/${feature.slug}`}>
       <Card className="overflow-hidden border border-primary/30 hover:border-primary/50 transition-all h-full">
         <div className="relative">
           {feature.representative_thumbnail_url ? (
@@ -78,7 +78,7 @@ function CarouselItem({ feature }: { feature: DbSeihekiFeature }) {
 // PC用グリッドカルーセルアイテム
 function GridCarouselItem({ feature }: { feature: DbSeihekiFeature }) {
   return (
-    <Link href={`/tokushu/seiheki/${encodeURIComponent(feature.name)}`}>
+    <Link href={`/tokushu/seiheki/${feature.slug}`}>
       <Card className="overflow-hidden border border-primary/30 hover:border-primary/50 transition-all group">
         <div className="relative aspect-4/3 overflow-hidden">
           {feature.representative_thumbnail_url ? (

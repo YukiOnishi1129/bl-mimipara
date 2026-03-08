@@ -30,7 +30,7 @@ export function seihekiFeatureToUnified(feature: DbSeihekiFeature): UnifiedFeatu
     slug: feature.slug,
     headline: feature.headline,
     thumbnail_url: feature.representative_thumbnail_url,
-    href: `/tokushu/seiheki/${encodeURIComponent(feature.name)}`,
+    href: `/tokushu/seiheki/${feature.slug}`,
   };
 }
 
