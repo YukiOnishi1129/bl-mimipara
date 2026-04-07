@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const totalRecommended = (feature.asmr_works?.length || 0) + (feature.game_works?.length || 0);
-  const title = `${feature.name}特集 - おすすめBL作品厳選${totalRecommended}作品 | みみぱら`;
+  const title = `${feature.name}特集 - おすすめBL作品レビュー厳選${totalRecommended}作品 | みみぱら`;
   const description =
     feature.description ||
     `${feature.name}の人気BL ASMR＆ゲーム作品を厳選。迷ったらここから選べばハズレなし。`;

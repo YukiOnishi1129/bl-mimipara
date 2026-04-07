@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "タグが見つかりません | みみぱら" };
   }
 
-  const title = `「${tagName}」タグの作品（${dbWorks.length}作品） | みみぱら`;
+  const title = `「${tagName}」タグの作品レビュー（${dbWorks.length}作品） | みみぱら`;
   const description = `「${tagName}」タグのBL ASMR＆ゲーム作品${dbWorks.length}作品を掲載。`;
 
   return { title, description };
