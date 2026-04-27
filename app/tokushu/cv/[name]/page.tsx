@@ -66,14 +66,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const feature = await getVoiceActorFeatureByName(decodedName);
 
   if (!feature) {
-    return { title: "声優特集 | みみぱら" };
+    return { title: "声優特集" };
   }
 
   const totalRecommended = (feature.asmr_works?.length || 0) + (feature.game_works?.length || 0);
-  const title = `${feature.name}特集 - おすすめBL作品レビュー厳選${totalRecommended}作品 | みみぱら`;
-  const description =
+  const year = new Date().getFullYear();
+  // layout.tsx の template "%s | みみぱら" が自動付与される
+  const title = `【${year}年最新】${feature.name}特集 BL同人ASMR・ゲーム出演作おすすめ${totalRecommended}選`;
+  const baseDesc =
     feature.description ||
-    `${feature.name}の人気BL ASMR＆ゲーム作品を厳選。迷ったらここから選べばハズレなし。`;
+    `${feature.name}の人気BL同人ASMR・ゲーム作品を厳選レビュー。迷ったらここから選べばハズレなし。`;
+  const description = `【${year}年最新】声優${feature.name}の出演作${totalRecommended}選。${baseDesc}DLsite・FANZAで人気の評価・あらすじ・感想を毎日更新。`.slice(0, 160);
   const ogImage = feature.representative_thumbnail_url || undefined;
   const keywords = [
     feature.name,

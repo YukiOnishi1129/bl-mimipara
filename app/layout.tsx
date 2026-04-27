@@ -21,7 +21,10 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bl-mimipara.com"),
-  title: "みみぱら | BL ASMR＆ゲームまとめ",
+  title: {
+    default: "みみぱら | BL ASMR＆ゲームまとめ",
+    template: "%s | みみぱら",
+  },
   description:
     "BL向けASMR・ゲームの厳選作品を紹介。評価・ランキング・セール情報もまとめてチェック。",
   icons: {
