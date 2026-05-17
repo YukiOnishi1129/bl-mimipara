@@ -124,3 +124,149 @@ export function BreadcrumbJsonLd({
     />
   );
 }
+
+// =============================================================================
+// Organization JSON-LD
+// =============================================================================
+export function OrganizationJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "BL耳パラ",
+    alternateName: "BL耳パラ編集部",
+    url: "https://bl-mimipara.com",
+    description:
+      "BL同人ASMR・BL同人音声の厳選レビューサイト。声優・サークル・シチュエーション別の人気作品・セール情報をAIによる分析と人手の編集で整理してお届けします。",
+    sameAs: [
+      "https://x.com/bl_mimipara",
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+// =============================================================================
+// WebSite JSON-LD
+// =============================================================================
+export function WebSiteJsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "BL耳パラ",
+    alternateName: "BL耳パラ | BL同人ASMR・BL同人音声の厳選レビューサイト",
+    url: "https://bl-mimipara.com",
+    inLanguage: "ja",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://bl-mimipara.com/search?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+// =============================================================================
+// Person JSON-LD（声優ページ）
+// =============================================================================
+interface PersonJsonLdProps {
+  name: string;
+  workCount: number;
+  avgRating?: number | null;
+  thumbnailUrl?: string | null;
+  pageUrl: string;
+}
+
+export function PersonJsonLd({
+  name,
+  workCount,
+  avgRating,
+  thumbnailUrl,
+  pageUrl,
+}: PersonJsonLdProps) {
+  const description = `BL同人ASMR・BL同人音声に出演する声優「${name}」の出演作品${workCount}件をまとめたページ。レビュー・評価・人気作・セール情報をBL耳パラ編集部が整理しています。`;
+
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name,
+    url: pageUrl,
+    description,
+    jobTitle: "声優",
+    knowsAbout: ["BL ASMR", "BL同人音声"],
+  };
+
+  if (thumbnailUrl) {
+    jsonLd.image = thumbnailUrl;
+  }
+
+  if (avgRating && avgRating > 0) {
+    jsonLd.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: avgRating.toFixed(2),
+      reviewCount: workCount,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+// =============================================================================
+// Circle (Organization) JSON-LD
+// =============================================================================
+interface CircleOrganizationJsonLdProps {
+  name: string;
+  workCount: number;
+  mainGenre?: string | null;
+  pageUrl: string;
+}
+
+export function CircleOrganizationJsonLd({
+  name,
+  workCount,
+  mainGenre,
+  pageUrl,
+}: CircleOrganizationJsonLdProps) {
+  const genreText = mainGenre ? `（${mainGenre}）` : "";
+  const description = `同人サークル「${name}」${genreText}の作品${workCount}件をまとめたページ。代表作・人気作・セール情報をBL耳パラ編集部が整理しています。`;
+
+  const jsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name,
+    url: pageUrl,
+    description,
+    additionalType: "https://schema.org/CreativeWork",
+  };
+
+  if (mainGenre) {
+    jsonLd.knowsAbout = [mainGenre, "BL同人作品"];
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}

@@ -5,6 +5,8 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { WorkGridWithLoadMore } from "@/components/work-grid-with-load-more";
 import { Badge } from "@/components/ui/badge";
 import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { LastUpdated } from "@/components/last-updated";
+import { EditorialCredit } from "@/components/editorial-credit";
 import { getWorksByTag, getAllTagNames, getRelatedTags, tagSlugToName, tagNameToSlug } from "@/lib/db";
 import { dbWorkToWork } from "@/lib/types";
 import { notFound } from "next/navigation";
@@ -110,7 +112,10 @@ export default async function TagDetailPage({ params }: Props) {
       <Header />
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Breadcrumb items={breadcrumbItems} />
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <Breadcrumb items={breadcrumbItems} />
+          <LastUpdated variant="card" />
+        </div>
 
         <h1 className="mb-1 text-2xl font-bold text-foreground font-heading">
           #{tagName} のBL同人ASMR・ゲームおすすめ{totalCount}選
@@ -182,6 +187,8 @@ export default async function TagDetailPage({ params }: Props) {
         ) : (
           <p className="text-muted-foreground">作品がありません。</p>
         )}
+
+        <EditorialCredit />
       </main>
 
       <Footer />

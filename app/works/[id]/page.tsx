@@ -25,6 +25,8 @@ import {
 } from "@/lib/db";
 import { dbWorkToWork } from "@/lib/types";
 import { ProductJsonLd, ReviewJsonLd, BreadcrumbJsonLd } from "@/components/json-ld";
+import { LastUpdated } from "@/components/last-updated";
+import { EditorialCredit } from "@/components/editorial-credit";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -238,7 +240,10 @@ export default async function WorkDetailPage({ params }: Props) {
       )}
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Breadcrumb items={breadcrumbItems} />
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <Breadcrumb items={breadcrumbItems} />
+          <LastUpdated variant="card" />
+        </div>
 
         {/* ヒーローセクション */}
         <div className="relative mb-6 overflow-hidden rounded-lg">
@@ -856,6 +861,8 @@ export default async function WorkDetailPage({ params }: Props) {
             </section>
           )}
         </div>
+
+        <EditorialCredit variant="work" />
       </main>
 
       <Footer />

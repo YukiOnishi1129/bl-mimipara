@@ -5,7 +5,9 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { WorkGridWithLoadMore } from "@/components/work-grid-with-load-more";
 import { Badge } from "@/components/ui/badge";
 import { AffiliateLink } from "@/components/affiliate-link";
-import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { BreadcrumbJsonLd, CircleOrganizationJsonLd } from "@/components/json-ld";
+import { LastUpdated } from "@/components/last-updated";
+import { EditorialCredit } from "@/components/editorial-credit";
 import { getCircleWithWorks, getAllCircleNames } from "@/lib/db";
 import { dbCircleToCircle, dbWorkToWork } from "@/lib/types";
 import { notFound } from "next/navigation";
@@ -90,13 +92,24 @@ export default async function CircleDetailPage({ params }: Props) {
     { label: circle.name },
   ];
 
+  const circlePageUrl = `https://bl-mimipara.com/circles/${name}/`;
+
   return (
     <div className="min-h-screen bg-background">
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CircleOrganizationJsonLd
+        name={circle.name}
+        workCount={totalCount}
+        mainGenre={null}
+        pageUrl={circlePageUrl}
+      />
       <Header />
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Breadcrumb items={breadcrumbItems} />
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <Breadcrumb items={breadcrumbItems} />
+          <LastUpdated variant="card" />
+        </div>
 
         <div className="mb-8 rounded-2xl border border-border bg-card p-6">
           <h1 className="text-2xl font-bold text-foreground font-heading">
@@ -182,6 +195,8 @@ export default async function CircleDetailPage({ params }: Props) {
             このサークルの作品はまだ登録されていません。
           </p>
         )}
+
+        <EditorialCredit />
       </main>
 
       <Footer />

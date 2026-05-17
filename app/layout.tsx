@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Script from "next/script";
 import { Zen_Maru_Gothic, Noto_Sans_JP } from "next/font/google";
 import { MobileNav } from "@/components/mobile-nav";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/json-ld";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-9PKG6F285S";
@@ -59,6 +60,9 @@ export default function RootLayout({
       <body
         className={`${zenMaruGothic.variable} ${notoSansJP.variable} font-body antialiased`}
       >
+        {/* サイト全体の構造化データ */}
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         {children}
         <Suspense>
           <MobileNav />

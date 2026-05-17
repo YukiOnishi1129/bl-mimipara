@@ -5,7 +5,9 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { WorkGridWithLoadMore } from "@/components/work-grid-with-load-more";
-import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { BreadcrumbJsonLd, PersonJsonLd } from "@/components/json-ld";
+import { LastUpdated } from "@/components/last-updated";
+import { EditorialCredit } from "@/components/editorial-credit";
 import { getWorksByActor, getAllActorNames, getVoiceActorFeatureByName } from "@/lib/db";
 import { dbWorkToWork } from "@/lib/types";
 import Link from "next/link";
@@ -94,13 +96,26 @@ export default async function CVDetailPage({ params }: Props) {
     { label: decodedName },
   ];
 
+  const topThumbnail = allWorks[0]?.thumbnailUrl ?? null;
+  const cvPageUrl = `https://bl-mimipara.com/cv/${name}/`;
+
   return (
     <div className="min-h-screen bg-background">
       <BreadcrumbJsonLd items={breadcrumbItems} />
+      <PersonJsonLd
+        name={decodedName}
+        workCount={totalCount}
+        avgRating={avgRating}
+        thumbnailUrl={topThumbnail}
+        pageUrl={cvPageUrl}
+      />
       <Header />
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Breadcrumb items={breadcrumbItems} />
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <Breadcrumb items={breadcrumbItems} />
+          <LastUpdated variant="card" />
+        </div>
 
         <h1 className="mb-1 text-2xl font-bold text-foreground font-heading">
           🎤 {decodedName}のBL同人ASMR・ゲーム出演作おすすめ{totalCount}選
@@ -212,6 +227,8 @@ export default async function CVDetailPage({ params }: Props) {
         ) : (
           <p className="text-muted-foreground">作品がありません。</p>
         )}
+
+        <EditorialCredit />
       </main>
 
       <Footer />

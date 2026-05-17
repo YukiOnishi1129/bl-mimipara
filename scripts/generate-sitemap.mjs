@@ -84,10 +84,11 @@ async function main() {
   // 静的ページ
   const staticPages = [
     { path: "", priority: "1.0", changefreq: "daily" },
-    { path: "/search/", priority: "0.7", changefreq: "weekly" },
+    // /search/ は robots.txt で Disallow しているのでサイトマップにも含めない
     { path: "/cv/", priority: "0.7", changefreq: "weekly" },
     { path: "/tags/", priority: "0.7", changefreq: "weekly" },
     { path: "/circles/", priority: "0.7", changefreq: "weekly" },
+    { path: "/editorial/", priority: "0.5", changefreq: "monthly" },
     { path: "/privacy/", priority: "0.3", changefreq: "monthly" },
     { path: "/tokushu/cv/", priority: "0.7", changefreq: "weekly" },
     { path: "/tokushu/seiheki/", priority: "0.7", changefreq: "weekly" },

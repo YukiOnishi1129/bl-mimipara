@@ -5,7 +5,10 @@ export function Footer() {
     <footer className="mt-16 border-t border-border bg-secondary/50 py-8">
       <div className="mx-auto max-w-7xl px-6 text-center text-sm text-foreground/60">
         <p className="mb-2 font-heading">みみぱら - BL ASMR＆ゲームまとめ</p>
-        <div className="mb-4 flex justify-center gap-4">
+        <div className="mb-4 flex flex-wrap justify-center gap-4">
+          <Link href="/editorial" className="hover:text-foreground">
+            編集方針
+          </Link>
           <Link href="/privacy" className="hover:text-foreground">
             プライバシーポリシー
           </Link>
