@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { LastUpdated } from "@/components/last-updated";
+import { PurposeNavigation } from "@/components/purpose-navigation";
 import { Footer } from "@/components/footer";
 import { HeroSaleBanner } from "@/components/hero-sale-banner";
 import { CampaignBanner } from "@/components/campaign-banner";
@@ -139,6 +140,9 @@ export default async function Home() {
           recommendationThumbnail={recommendationThumbnail}
           recommendationDate={dailyRecommendation?.target_date}
         />
+
+        {/* 目的別ナビゲーション */}
+        <PurposeNavigation />
 
         {/* 声優特集 & ジャンル特集（交互カルーセル） */}
         {(voiceActorFeatures.length > 0 || seihekiFeatures.length > 0) && (() => {

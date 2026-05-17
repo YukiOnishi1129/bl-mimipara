@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ).slice(0, 5);
 
   // layout.tsx の template "%s | みみぱら" が自動付与される
-  const title = `${tagName}のBL同人ASMR・ゲームおすすめ${dbWorks.length}選 レビュー・感想・セール情報`;
+  const year = new Date().getFullYear();
+  const saleBadge = saleCount > 0 ? `【${saleCount}作品セール中】` : "";
+  const title = `${saleBadge}【${year}年最新】「${tagName}」のBL同人ASMR・ゲームおすすめ${dbWorks.length}選｜タグ別レビュー`;
   const ratingText = avgRating ? `平均評価★${avgRating}。` : "";
   const saleText = saleCount > 0 ? `セール中${saleCount}作品。` : "";
   const circleText = topCircles.length > 0 ? `人気サークルは${topCircles.join("・")}など。` : "";
